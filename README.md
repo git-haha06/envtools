@@ -104,3 +104,8 @@ ideweb/
     │   └── components/         # 布局 & UI 组件
     └── dist/                   # 构建产物（生产用）
 ```
+## 效果图
+![img.png](imgs/img.png)
+![img_1.png](imgs/img_1.png)
+![img_2.png](imgs/img_2.png)
+![img_3.png](imgs/img_3.png)
