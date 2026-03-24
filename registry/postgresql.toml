@@ -1,0 +1,26 @@
+[package]
+name = "postgresql"
+display_name = "PostgreSQL"
+category = "database"
+description = "Advanced open-source relational database"
+website = "https://www.postgresql.org"
+
+[versions]
+available = ["17.2", "16.6", "15.10"]
+recommended = "17.2"
+
+[sources.official]
+windows = "https://get.enterprisedb.com/postgresql/postgresql-{version}-1-windows-x64.exe"
+macos = ""
+
+[install]
+windows_method = "exe"
+macos_method = "brew"
+
+[detect]
+commands = ["psql --version"]
+windows_paths = ["C:\\Program Files\\PostgreSQL\\*\\bin"]
+macos_paths = ["/usr/local/bin/psql", "/opt/homebrew/bin/psql"]
+
+[post_install]
+commands = []

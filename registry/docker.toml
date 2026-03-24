@@ -1,0 +1,27 @@
+[package]
+name = "docker"
+display_name = "Docker Desktop"
+category = "devtool"
+description = "Container platform for building and running applications"
+website = "https://www.docker.com"
+
+[versions]
+available = ["latest"]
+recommended = "latest"
+
+[sources.official]
+windows = "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
+macos = "https://desktop.docker.com/mac/main/arm64/Docker.dmg"
+macos_x64 = "https://desktop.docker.com/mac/main/amd64/Docker.dmg"
+
+[install]
+windows_method = "exe"
+macos_method = "exe"
+
+[detect]
+commands = ["docker --version"]
+windows_paths = ["C:\\Program Files\\Docker\\Docker\\resources\\bin"]
+macos_paths = ["/usr/local/bin/docker"]
+
+[post_install]
+commands = []

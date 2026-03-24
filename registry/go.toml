@@ -1,0 +1,32 @@
+[package]
+name = "go"
+display_name = "Go"
+category = "runtime"
+description = "Go programming language"
+website = "https://go.dev"
+
+[versions]
+available = ["1.23.6", "1.22.12"]
+recommended = "1.23.6"
+
+[sources.official]
+windows = "https://go.dev/dl/go{version}.windows-amd64.zip"
+macos = "https://go.dev/dl/go{version}.darwin-arm64.tar.gz"
+macos_x64 = "https://go.dev/dl/go{version}.darwin-amd64.tar.gz"
+
+[sources.mirror]
+windows = "https://golang.google.cn/dl/go{version}.windows-amd64.zip"
+macos = "https://golang.google.cn/dl/go{version}.darwin-arm64.tar.gz"
+macos_x64 = "https://golang.google.cn/dl/go{version}.darwin-amd64.tar.gz"
+
+[install]
+windows_method = "extract_and_link"
+macos_method = "extract_and_link"
+
+[detect]
+commands = ["go version"]
+windows_paths = ["C:\\Program Files\\Go\\bin", "C:\\Go\\bin"]
+macos_paths = ["/usr/local/go/bin", "/opt/homebrew/bin/go"]
+
+[post_install]
+commands = []

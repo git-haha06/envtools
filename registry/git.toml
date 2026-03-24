@@ -1,0 +1,30 @@
+[package]
+name = "git"
+display_name = "Git"
+category = "devtool"
+description = "Distributed version control system"
+website = "https://git-scm.com"
+
+[versions]
+available = ["2.47.1", "2.46.2"]
+recommended = "2.47.1"
+
+[sources.official]
+windows = "https://github.com/git-for-windows/git/releases/download/v{version}.windows.1/Git-{version}-64-bit.exe"
+macos = ""
+
+[sources.mirror]
+windows = "https://npmmirror.com/mirrors/git-for-windows/v{version}.windows.1/Git-{version}-64-bit.exe"
+macos = ""
+
+[install]
+windows_method = "exe"
+macos_method = "brew"
+
+[detect]
+commands = ["git --version"]
+windows_paths = ["C:\\Program Files\\Git\\cmd"]
+macos_paths = ["/usr/bin/git", "/usr/local/bin/git", "/opt/homebrew/bin/git"]
+
+[post_install]
+commands = []

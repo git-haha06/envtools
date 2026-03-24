@@ -1,0 +1,25 @@
+[package]
+name = "redis"
+display_name = "Redis"
+category = "database"
+description = "In-memory data structure store"
+website = "https://redis.io"
+
+[versions]
+available = ["7.4.2", "7.2.7"]
+recommended = "7.4.2"
+
+[sources.official]
+windows = ""
+macos = ""
+
+[install]
+macos_method = "brew"
+
+[detect]
+commands = ["redis-server --version"]
+windows_paths = []
+macos_paths = ["/usr/local/bin/redis-server", "/opt/homebrew/bin/redis-server"]
+
+[post_install]
+commands = []

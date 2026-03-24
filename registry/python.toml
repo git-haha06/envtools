@@ -1,0 +1,30 @@
+[package]
+name = "python"
+display_name = "Python"
+category = "runtime"
+description = "Python programming language interpreter"
+website = "https://www.python.org"
+
+[versions]
+available = ["3.13.2", "3.12.9", "3.11.11"]
+recommended = "3.13.2"
+
+[sources.official]
+windows = "https://www.python.org/ftp/python/{version}/python-{version}-amd64.exe"
+macos = "https://www.python.org/ftp/python/{version}/python-{version}-macos11.pkg"
+
+[sources.mirror]
+windows = "https://npmmirror.com/mirrors/python/{version}/python-{version}-amd64.exe"
+macos = "https://npmmirror.com/mirrors/python/{version}/python-{version}-macos11.pkg"
+
+[install]
+windows_method = "exe"
+macos_method = "brew"
+
+[detect]
+commands = ["python --version", "python3 --version"]
+windows_paths = ["C:\\Python3*", "C:\\Users\\*\\AppData\\Local\\Programs\\Python\\*"]
+macos_paths = ["/usr/local/bin/python3", "/opt/homebrew/bin/python3"]
+
+[post_install]
+commands = []

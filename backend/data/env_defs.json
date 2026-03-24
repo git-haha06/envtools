@@ -1,0 +1,2563 @@
+{
+  "_comment": "环境定义配置文件 — 首次启动时写入数据库，后续从数据库读取。可手动编辑此文件，删除数据库后重启即可重新导入。",
+  "environments": [
+    {
+      "env_id": "nodejs",
+      "display_name": "Node.js",
+      "category": "Runtime",
+      "scan_commands": [
+        "node"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".npmrc (user)",
+          "search": [
+            "{home}/.npmrc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Node 版本",
+          "label_en": "Node Version",
+          "cmd": "node --version",
+          "type": "info"
+        },
+        {
+          "id": "npm_ver",
+          "label_zh": "npm 版本",
+          "label_en": "npm Version",
+          "cmd": "npm --version",
+          "type": "info"
+        },
+        {
+          "id": "global",
+          "label_zh": "全局包列表",
+          "label_en": "Global Packages",
+          "cmd": "npm list -g --depth=0",
+          "type": "info"
+        },
+        {
+          "id": "npm_config",
+          "label_zh": "npm 配置",
+          "label_en": "npm Config",
+          "cmd": "npm config list",
+          "type": "info"
+        },
+        {
+          "id": "registry",
+          "label_zh": "查看镜像源",
+          "label_en": "Registry",
+          "cmd": "npm config get registry",
+          "type": "info"
+        },
+        {
+          "id": "cache_clean",
+          "label_zh": "清理缓存",
+          "label_en": "Clean Cache",
+          "cmd": "npm cache clean --force",
+          "type": "warning"
+        },
+        {
+          "id": "outdated_g",
+          "label_zh": "过期全局包",
+          "label_en": "Outdated Global",
+          "cmd": "npm outdated -g",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "npm",
+      "display_name": "npm",
+      "category": "DevTool",
+      "scan_commands": [
+        "npm"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".npmrc (user)",
+          "search": [
+            "{home}/.npmrc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "npm 版本",
+          "label_en": "Version",
+          "cmd": "npm --version",
+          "type": "info"
+        },
+        {
+          "id": "config",
+          "label_zh": "npm 配置",
+          "label_en": "Config",
+          "cmd": "npm config list",
+          "type": "info"
+        },
+        {
+          "id": "registry",
+          "label_zh": "镜像源",
+          "label_en": "Registry",
+          "cmd": "npm config get registry",
+          "type": "info"
+        },
+        {
+          "id": "global",
+          "label_zh": "全局包",
+          "label_en": "Global Packages",
+          "cmd": "npm list -g --depth=0",
+          "type": "info"
+        },
+        {
+          "id": "cache_clean",
+          "label_zh": "清理缓存",
+          "label_en": "Clean Cache",
+          "cmd": "npm cache clean --force",
+          "type": "warning"
+        }
+      ]
+    },
+    {
+      "env_id": "pnpm",
+      "display_name": "pnpm",
+      "category": "DevTool",
+      "scan_commands": [
+        "pnpm"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".npmrc (user)",
+          "search": [
+            "{home}/.npmrc"
+          ]
+        },
+        {
+          "name": ".pnpmrc",
+          "search": [
+            "{home}/.pnpmrc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "pnpm 版本",
+          "label_en": "Version",
+          "cmd": "pnpm --version",
+          "type": "info"
+        },
+        {
+          "id": "global",
+          "label_zh": "全局包",
+          "label_en": "Global Packages",
+          "cmd": "pnpm list -g",
+          "type": "info"
+        },
+        {
+          "id": "store_path",
+          "label_zh": "Store 路径",
+          "label_en": "Store Path",
+          "cmd": "pnpm store path",
+          "type": "info"
+        },
+        {
+          "id": "store_prune",
+          "label_zh": "清理 Store",
+          "label_en": "Prune Store",
+          "cmd": "pnpm store prune",
+          "type": "warning"
+        }
+      ]
+    },
+    {
+      "env_id": "yarn",
+      "display_name": "Yarn",
+      "category": "DevTool",
+      "scan_commands": [
+        "yarn"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".yarnrc.yml",
+          "search": [
+            "{home}/.yarnrc.yml",
+            "{home}/.yarnrc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Yarn 版本",
+          "label_en": "Version",
+          "cmd": "yarn --version",
+          "type": "info"
+        },
+        {
+          "id": "global",
+          "label_zh": "全局包",
+          "label_en": "Global Packages",
+          "cmd": "yarn global list",
+          "type": "info"
+        },
+        {
+          "id": "cache_dir",
+          "label_zh": "缓存目录",
+          "label_en": "Cache Dir",
+          "cmd": "yarn cache dir",
+          "type": "info"
+        },
+        {
+          "id": "cache_clean",
+          "label_zh": "清理缓存",
+          "label_en": "Clean Cache",
+          "cmd": "yarn cache clean",
+          "type": "warning"
+        }
+      ]
+    },
+    {
+      "env_id": "bun",
+      "display_name": "Bun",
+      "category": "Runtime",
+      "scan_commands": [
+        "bun"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Bun 版本",
+          "label_en": "Version",
+          "cmd": "bun --version",
+          "type": "info"
+        },
+        {
+          "id": "pm_ls",
+          "label_zh": "全局包",
+          "label_en": "Global Packages",
+          "cmd": "bun pm ls -g",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "deno",
+      "display_name": "Deno",
+      "category": "Runtime",
+      "scan_commands": [
+        "deno"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Deno 版本",
+          "label_en": "Version",
+          "cmd": "deno --version",
+          "type": "info"
+        },
+        {
+          "id": "info",
+          "label_zh": "环境信息",
+          "label_en": "Info",
+          "cmd": "deno info",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "python",
+      "display_name": "Python",
+      "category": "Runtime",
+      "scan_commands": [
+        "python",
+        "python3"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "pip.ini",
+          "search": [
+            "{appdata}/pip/pip.ini",
+            "{home}/.pip/pip.conf",
+            "{home}/.config/pip/pip.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Python 版本",
+          "label_en": "Version",
+          "cmd": "python --version",
+          "type": "info"
+        },
+        {
+          "id": "pip_ver",
+          "label_zh": "pip 版本",
+          "label_en": "pip Version",
+          "cmd": "pip --version",
+          "type": "info"
+        },
+        {
+          "id": "pip_list",
+          "label_zh": "已安装包",
+          "label_en": "Installed Packages",
+          "cmd": "pip list",
+          "type": "info"
+        },
+        {
+          "id": "pip_outdated",
+          "label_zh": "可更新包",
+          "label_en": "Outdated Packages",
+          "cmd": "pip list --outdated",
+          "type": "info"
+        },
+        {
+          "id": "pip_config",
+          "label_zh": "pip 配置",
+          "label_en": "pip Config",
+          "cmd": "pip config list",
+          "type": "info"
+        },
+        {
+          "id": "pip_cache_info",
+          "label_zh": "缓存信息",
+          "label_en": "Cache Info",
+          "cmd": "pip cache info",
+          "type": "info"
+        },
+        {
+          "id": "pip_cache_purge",
+          "label_zh": "清理缓存",
+          "label_en": "Purge Cache",
+          "cmd": "pip cache purge",
+          "type": "warning"
+        },
+        {
+          "id": "sys_path",
+          "label_zh": "sys.path",
+          "label_en": "sys.path",
+          "cmd": "python -c \"import sys; print('\\n'.join(sys.path))\"",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "java",
+      "display_name": "Java (JDK)",
+      "category": "Runtime",
+      "scan_commands": [
+        "java"
+      ],
+      "version_flag": "-version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Java 版本",
+          "label_en": "Version",
+          "cmd": "java -version",
+          "type": "info"
+        },
+        {
+          "id": "javac",
+          "label_zh": "Javac 版本",
+          "label_en": "Javac Version",
+          "cmd": "javac -version",
+          "type": "info"
+        },
+        {
+          "id": "java_home",
+          "label_zh": "JAVA_HOME",
+          "label_en": "JAVA_HOME",
+          "cmd": "java -XshowSettings:property -version 2>&1 | findstr \"java.home\"",
+          "type": "info"
+        },
+        {
+          "id": "sys_props",
+          "label_zh": "系统属性",
+          "label_en": "System Properties",
+          "cmd": "java -XshowSettings:all -version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "go",
+      "display_name": "Go",
+      "category": "Runtime",
+      "scan_commands": [
+        "go"
+      ],
+      "version_flag": "version",
+      "config_patterns": [
+        {
+          "name": "go env",
+          "search": [
+            "{appdata}/go/env",
+            "{home}/.config/go/env"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Go 版本",
+          "label_en": "Version",
+          "cmd": "go version",
+          "type": "info"
+        },
+        {
+          "id": "env",
+          "label_zh": "Go 环境变量",
+          "label_en": "Go Env",
+          "cmd": "go env",
+          "type": "info"
+        },
+        {
+          "id": "gopath",
+          "label_zh": "GOPATH",
+          "label_en": "GOPATH",
+          "cmd": "go env GOPATH",
+          "type": "info"
+        },
+        {
+          "id": "goproxy",
+          "label_zh": "代理设置",
+          "label_en": "GOPROXY",
+          "cmd": "go env GOPROXY",
+          "type": "info"
+        },
+        {
+          "id": "clean_cache",
+          "label_zh": "清理构建缓存",
+          "label_en": "Clean Cache",
+          "cmd": "go clean -cache",
+          "type": "warning"
+        },
+        {
+          "id": "clean_modcache",
+          "label_zh": "清理模块缓存",
+          "label_en": "Clean Mod Cache",
+          "cmd": "go clean -modcache",
+          "type": "danger"
+        }
+      ]
+    },
+    {
+      "env_id": "rust",
+      "display_name": "Rust",
+      "category": "Runtime",
+      "scan_commands": [
+        "rustc"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "cargo config",
+          "search": [
+            "{home}/.cargo/config.toml",
+            "{home}/.cargo/config"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Rust 版本",
+          "label_en": "Version",
+          "cmd": "rustc --version",
+          "type": "info"
+        },
+        {
+          "id": "cargo_ver",
+          "label_zh": "Cargo 版本",
+          "label_en": "Cargo Version",
+          "cmd": "cargo --version",
+          "type": "info"
+        },
+        {
+          "id": "rustup_show",
+          "label_zh": "工具链列表",
+          "label_en": "Toolchain List",
+          "cmd": "rustup show",
+          "type": "info"
+        },
+        {
+          "id": "rustup_update",
+          "label_zh": "更新 Rust",
+          "label_en": "Update Rust",
+          "cmd": "rustup update",
+          "type": "primary"
+        },
+        {
+          "id": "targets",
+          "label_zh": "已安装 Target",
+          "label_en": "Installed Targets",
+          "cmd": "rustup target list --installed",
+          "type": "info"
+        },
+        {
+          "id": "components",
+          "label_zh": "已安装组件",
+          "label_en": "Components",
+          "cmd": "rustup component list --installed",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "dotnet",
+      "display_name": ".NET SDK",
+      "category": "SDK",
+      "scan_commands": [
+        "dotnet"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "nuget.config",
+          "search": [
+            "{appdata}/NuGet/NuGet.Config",
+            "{home}/.nuget/NuGet/NuGet.Config"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": ".NET 版本",
+          "label_en": "Version",
+          "cmd": "dotnet --version",
+          "type": "info"
+        },
+        {
+          "id": "info",
+          "label_zh": "详细信息",
+          "label_en": "Info",
+          "cmd": "dotnet --info",
+          "type": "info"
+        },
+        {
+          "id": "sdks",
+          "label_zh": "已安装 SDK",
+          "label_en": "Installed SDKs",
+          "cmd": "dotnet --list-sdks",
+          "type": "info"
+        },
+        {
+          "id": "runtimes",
+          "label_zh": "已安装运行时",
+          "label_en": "Installed Runtimes",
+          "cmd": "dotnet --list-runtimes",
+          "type": "info"
+        },
+        {
+          "id": "nuget_sources",
+          "label_zh": "NuGet 源",
+          "label_en": "NuGet Sources",
+          "cmd": "dotnet nuget list source",
+          "type": "info"
+        },
+        {
+          "id": "clean",
+          "label_zh": "清理缓存",
+          "label_en": "Clean Cache",
+          "cmd": "dotnet nuget locals all --clear",
+          "type": "warning"
+        }
+      ]
+    },
+    {
+      "env_id": "php",
+      "display_name": "PHP",
+      "category": "Runtime",
+      "scan_commands": [
+        "php"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "php.ini",
+          "search": [
+            "{path}/php.ini",
+            "{root}/php.ini",
+            "/etc/php/*/cli/php.ini",
+            "/etc/php/*/apache2/php.ini"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "PHP 版本",
+          "label_en": "Version",
+          "cmd": "php --version",
+          "type": "info"
+        },
+        {
+          "id": "modules",
+          "label_zh": "已加载模块",
+          "label_en": "Loaded Modules",
+          "cmd": "php -m",
+          "type": "info"
+        },
+        {
+          "id": "ini_path",
+          "label_zh": "php.ini 路径",
+          "label_en": "php.ini Path",
+          "cmd": "php --ini",
+          "type": "info"
+        },
+        {
+          "id": "info_short",
+          "label_zh": "关键配置",
+          "label_en": "Key Config",
+          "cmd": "php -i | findstr \"memory_limit\\|upload_max\\|post_max\\|max_execution\"",
+          "type": "info"
+        },
+        {
+          "id": "composer_ver",
+          "label_zh": "Composer 版本",
+          "label_en": "Composer Version",
+          "cmd": "composer --version",
+          "type": "info"
+        },
+        {
+          "id": "composer_global",
+          "label_zh": "Composer 全局包",
+          "label_en": "Composer Global",
+          "cmd": "composer global show",
+          "type": "info"
+        },
+        {
+          "id": "dev_server",
+          "label_zh": "启动内置服务器(8080)",
+          "label_en": "Dev Server (:8080)",
+          "cmd": "php -S localhost:8080",
+          "type": "success",
+          "background": true
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "php",
+          "php-fpm",
+          "php-cgi"
+        ],
+        "port_detect": [
+          {
+            "label": "PHP-FPM",
+            "default": 9000,
+            "pattern": "listen\\s*=\\s*.*:(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "ruby",
+      "display_name": "Ruby",
+      "category": "Runtime",
+      "scan_commands": [
+        "ruby"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".gemrc",
+          "search": [
+            "{home}/.gemrc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Ruby 版本",
+          "label_en": "Version",
+          "cmd": "ruby --version",
+          "type": "info"
+        },
+        {
+          "id": "gem_ver",
+          "label_zh": "Gem 版本",
+          "label_en": "Gem Version",
+          "cmd": "gem --version",
+          "type": "info"
+        },
+        {
+          "id": "gem_list",
+          "label_zh": "已安装 Gem",
+          "label_en": "Installed Gems",
+          "cmd": "gem list",
+          "type": "info"
+        },
+        {
+          "id": "gem_env",
+          "label_zh": "Gem 环境",
+          "label_en": "Gem Env",
+          "cmd": "gem environment",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "perl",
+      "display_name": "Perl",
+      "category": "Runtime",
+      "scan_commands": [
+        "perl"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Perl 版本",
+          "label_en": "Version",
+          "cmd": "perl --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "git",
+      "display_name": "Git",
+      "category": "DevTool",
+      "scan_commands": [
+        "git"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".gitconfig",
+          "search": [
+            "{home}/.gitconfig"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "git --version",
+          "type": "info"
+        },
+        {
+          "id": "config_list",
+          "label_zh": "全局配置",
+          "label_en": "Global Config",
+          "cmd": "git config --global --list",
+          "type": "info"
+        },
+        {
+          "id": "user_info",
+          "label_zh": "用户信息",
+          "label_en": "User Info",
+          "cmd": "git config --global user.name && git config --global user.email",
+          "type": "info"
+        },
+        {
+          "id": "credential",
+          "label_zh": "凭证管理器",
+          "label_en": "Credential Helper",
+          "cmd": "git config --global credential.helper",
+          "type": "info"
+        },
+        {
+          "id": "aliases",
+          "label_zh": "别名列表",
+          "label_en": "Aliases",
+          "cmd": "git config --global --get-regexp alias",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "svn",
+      "display_name": "SVN",
+      "category": "DevTool",
+      "scan_commands": [
+        "svn"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "svn --version --quiet",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "cmake",
+      "display_name": "CMake",
+      "category": "DevTool",
+      "scan_commands": [
+        "cmake"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "CMake 版本",
+          "label_en": "Version",
+          "cmd": "cmake --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "make",
+      "display_name": "Make",
+      "category": "DevTool",
+      "scan_commands": [
+        "make"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Make 版本",
+          "label_en": "Version",
+          "cmd": "make --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "maven",
+      "display_name": "Maven",
+      "category": "DevTool",
+      "scan_commands": [
+        "mvn"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "settings.xml",
+          "search": [
+            "{home}/.m2/settings.xml",
+            "{root}/conf/settings.xml"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Maven 版本",
+          "label_en": "Version",
+          "cmd": "mvn --version",
+          "type": "info"
+        },
+        {
+          "id": "settings",
+          "label_zh": "有效配置",
+          "label_en": "Effective Settings",
+          "cmd": "mvn help:effective-settings",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "gradle",
+      "display_name": "Gradle",
+      "category": "DevTool",
+      "scan_commands": [
+        "gradle"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "gradle.properties",
+          "search": [
+            "{home}/.gradle/gradle.properties"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Gradle 版本",
+          "label_en": "Version",
+          "cmd": "gradle --version",
+          "type": "info"
+        },
+        {
+          "id": "stop_daemons",
+          "label_zh": "停止 Daemon",
+          "label_en": "Stop Daemons",
+          "cmd": "gradle --stop",
+          "type": "warning"
+        }
+      ]
+    },
+    {
+      "env_id": "nginx",
+      "display_name": "Nginx",
+      "category": "DevTool",
+      "scan_commands": [
+        "nginx"
+      ],
+      "version_flag": "-v",
+      "config_patterns": [
+        {
+          "name": "nginx.conf",
+          "search": [
+            "{path}/conf/nginx.conf",
+            "{root}/conf/nginx.conf",
+            "/etc/nginx/nginx.conf",
+            "/usr/local/nginx/conf/nginx.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "nginx -v",
+          "type": "info"
+        },
+        {
+          "id": "validate",
+          "label_zh": "验证配置",
+          "label_en": "Validate Config",
+          "cmd": "nginx -p {bin_path} -t",
+          "type": "info"
+        },
+        {
+          "id": "reload",
+          "label_zh": "重载配置",
+          "label_en": "Reload",
+          "cmd": "nginx -p {bin_path} -s reload",
+          "type": "primary"
+        },
+        {
+          "id": "reopen",
+          "label_zh": "重新打开日志",
+          "label_en": "Reopen Logs",
+          "cmd": "nginx -p {bin_path} -s reopen",
+          "type": "primary"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "nginx -p {bin_path}",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "快速停止",
+          "label_en": "Stop",
+          "cmd": "nginx -p {bin_path} -s stop",
+          "type": "danger"
+        },
+        {
+          "id": "quit",
+          "label_zh": "优雅停止",
+          "label_en": "Graceful Stop",
+          "cmd": "nginx -p {bin_path} -s quit",
+          "type": "warning"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "nginx"
+        ],
+        "port_detect": [
+          {
+            "label": "HTTP",
+            "default": 80,
+            "pattern": "listen\\s+(\\d+)"
+          },
+          {
+            "label": "HTTPS",
+            "default": 443,
+            "pattern": "listen\\s+(\\d+)\\s+ssl"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "apache",
+      "display_name": "Apache",
+      "category": "DevTool",
+      "scan_commands": [
+        "httpd",
+        "apache2"
+      ],
+      "version_flag": "-v",
+      "config_patterns": [
+        {
+          "name": "httpd.conf",
+          "search": [
+            "{path}/conf/httpd.conf",
+            "{root}/conf/httpd.conf",
+            "/etc/httpd/conf/httpd.conf",
+            "/etc/apache2/apache2.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "httpd -v",
+          "type": "info"
+        },
+        {
+          "id": "validate",
+          "label_zh": "验证配置",
+          "label_en": "Validate Config",
+          "cmd": "httpd -t",
+          "type": "info"
+        },
+        {
+          "id": "modules",
+          "label_zh": "已加载模块",
+          "label_en": "Loaded Modules",
+          "cmd": "httpd -M",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "httpd -k start",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "httpd -k stop",
+          "type": "danger"
+        },
+        {
+          "id": "restart",
+          "label_zh": "重启",
+          "label_en": "Restart",
+          "cmd": "httpd -k restart",
+          "type": "warning"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "httpd",
+          "apache2"
+        ],
+        "port_detect": [
+          {
+            "label": "HTTP",
+            "default": 80,
+            "pattern": "Listen\\s+(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "caddy",
+      "display_name": "Caddy",
+      "category": "DevTool",
+      "scan_commands": [
+        "caddy"
+      ],
+      "version_flag": "version",
+      "config_patterns": [
+        {
+          "name": "Caddyfile",
+          "search": [
+            "{path}/Caddyfile",
+            "{root}/Caddyfile",
+            "/etc/caddy/Caddyfile"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "caddy version",
+          "type": "info"
+        },
+        {
+          "id": "validate",
+          "label_zh": "验证配置",
+          "label_en": "Validate",
+          "cmd": "caddy validate",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "caddy start",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "caddy stop",
+          "type": "danger"
+        },
+        {
+          "id": "reload",
+          "label_zh": "重载",
+          "label_en": "Reload",
+          "cmd": "caddy reload",
+          "type": "primary"
+        },
+        {
+          "id": "modules",
+          "label_zh": "模块列表",
+          "label_en": "Modules",
+          "cmd": "caddy list-modules",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "caddy"
+        ],
+        "port_detect": [
+          {
+            "label": "HTTP",
+            "default": 80,
+            "pattern": "http_port\\s+(\\d+)"
+          },
+          {
+            "label": "HTTPS",
+            "default": 443,
+            "pattern": "https_port\\s+(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "mysql",
+      "display_name": "MySQL",
+      "category": "Database",
+      "scan_commands": [
+        "mysql"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "my.ini / my.cnf",
+          "search": [
+            "{path}/my.ini",
+            "{root}/my.ini",
+            "{path}/my.cnf",
+            "{root}/my.cnf",
+            "C:/ProgramData/MySQL/MySQL Server */my.ini",
+            "/etc/my.cnf",
+            "/etc/mysql/my.cnf",
+            "/etc/mysql/mysql.conf.d/mysqld.cnf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "mysql --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "mysqld --console",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "mysqladmin -u root shutdown",
+          "type": "danger"
+        },
+        {
+          "id": "ping",
+          "label_zh": "检测连接",
+          "label_en": "Ping",
+          "cmd": "mysqladmin -u root ping",
+          "type": "info"
+        },
+        {
+          "id": "status",
+          "label_zh": "服务状态",
+          "label_en": "Status",
+          "cmd": "mysqladmin -u root status",
+          "type": "info"
+        },
+        {
+          "id": "processlist",
+          "label_zh": "进程列表",
+          "label_en": "Process List",
+          "cmd": "mysqladmin -u root processlist",
+          "type": "info"
+        },
+        {
+          "id": "variables",
+          "label_zh": "关键变量",
+          "label_en": "Key Variables",
+          "cmd": "mysqladmin -u root variables | findstr \"port\\|datadir\\|socket\\|version\\|max_connections\"",
+          "type": "info"
+        },
+        {
+          "id": "install_svc",
+          "label_zh": "安装为服务",
+          "label_en": "Install Service",
+          "cmd": "mysqld --install MySQL",
+          "type": "warning"
+        },
+        {
+          "id": "remove_svc",
+          "label_zh": "卸载服务",
+          "label_en": "Remove Service",
+          "cmd": "mysqld --remove MySQL",
+          "type": "danger"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "mysqld"
+        ],
+        "port_detect": [
+          {
+            "label": "MySQL",
+            "default": 3306,
+            "pattern": "port\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "mariadb",
+      "display_name": "MariaDB",
+      "category": "Database",
+      "scan_commands": [
+        "mariadb",
+        "mysql"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "my.ini / my.cnf",
+          "search": [
+            "{path}/my.ini",
+            "{root}/my.ini",
+            "{path}/my.cnf",
+            "{root}/my.cnf",
+            "/etc/my.cnf",
+            "/etc/mysql/my.cnf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "mysql --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "mysqld --console",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "mysqladmin -u root shutdown",
+          "type": "danger"
+        },
+        {
+          "id": "ping",
+          "label_zh": "检测连接",
+          "label_en": "Ping",
+          "cmd": "mysqladmin -u root ping",
+          "type": "info"
+        },
+        {
+          "id": "status",
+          "label_zh": "服务状态",
+          "label_en": "Status",
+          "cmd": "mysqladmin -u root status",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "mysqld",
+          "mariadbd"
+        ],
+        "port_detect": [
+          {
+            "label": "MariaDB",
+            "default": 3306,
+            "pattern": "port\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "postgresql",
+      "display_name": "PostgreSQL",
+      "category": "Database",
+      "scan_commands": [
+        "psql"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "postgresql.conf",
+          "search": [
+            "{root}/data/postgresql.conf",
+            "/etc/postgresql/*/main/postgresql.conf"
+          ]
+        },
+        {
+          "name": "pg_hba.conf",
+          "search": [
+            "{root}/data/pg_hba.conf",
+            "/etc/postgresql/*/main/pg_hba.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "postgres --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "pg_ctl start -D \"{bin_path}/../data\"",
+          "type": "success"
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "pg_ctl stop -D \"{bin_path}/../data\"",
+          "type": "danger"
+        },
+        {
+          "id": "restart",
+          "label_zh": "重启",
+          "label_en": "Restart",
+          "cmd": "pg_ctl restart -D \"{bin_path}/../data\"",
+          "type": "warning"
+        },
+        {
+          "id": "reload",
+          "label_zh": "重载配置",
+          "label_en": "Reload Config",
+          "cmd": "pg_ctl reload -D \"{bin_path}/../data\"",
+          "type": "primary"
+        },
+        {
+          "id": "status",
+          "label_zh": "状态",
+          "label_en": "Status",
+          "cmd": "pg_ctl status -D \"{bin_path}/../data\"",
+          "type": "info"
+        },
+        {
+          "id": "initdb",
+          "label_zh": "初始化数据库",
+          "label_en": "Init DB",
+          "cmd": "initdb -D \"{bin_path}/../data\" -U postgres -E UTF8",
+          "type": "warning"
+        },
+        {
+          "id": "register_svc",
+          "label_zh": "注册为服务",
+          "label_en": "Register Service",
+          "cmd": "pg_ctl register -N PostgreSQL -D \"{bin_path}/../data\"",
+          "type": "warning"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "postgres",
+          "pg_ctl"
+        ],
+        "port_detect": [
+          {
+            "label": "PostgreSQL",
+            "default": 5432,
+            "pattern": "port\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "redis",
+      "display_name": "Redis",
+      "category": "Database",
+      "scan_commands": [
+        "redis-server",
+        "redis-cli"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "redis.conf",
+          "search": [
+            "{path}/redis.conf",
+            "{root}/redis.conf",
+            "{path}/redis.windows.conf",
+            "{path}/redis.windows-service.conf",
+            "/etc/redis/redis.conf",
+            "/etc/redis.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "redis-server --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "redis-server",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "redis-cli shutdown",
+          "type": "danger"
+        },
+        {
+          "id": "ping",
+          "label_zh": "Ping",
+          "label_en": "Ping",
+          "cmd": "redis-cli ping",
+          "type": "info"
+        },
+        {
+          "id": "info_server",
+          "label_zh": "服务信息",
+          "label_en": "Server Info",
+          "cmd": "redis-cli info server",
+          "type": "info"
+        },
+        {
+          "id": "info_memory",
+          "label_zh": "内存信息",
+          "label_en": "Memory Info",
+          "cmd": "redis-cli info memory",
+          "type": "info"
+        },
+        {
+          "id": "info_clients",
+          "label_zh": "客户端连接",
+          "label_en": "Client Info",
+          "cmd": "redis-cli info clients",
+          "type": "info"
+        },
+        {
+          "id": "dbsize",
+          "label_zh": "Key 数量",
+          "label_en": "DB Size",
+          "cmd": "redis-cli dbsize",
+          "type": "info"
+        },
+        {
+          "id": "config_maxmem",
+          "label_zh": "查看最大内存",
+          "label_en": "Max Memory",
+          "cmd": "redis-cli config get maxmemory",
+          "type": "info"
+        },
+        {
+          "id": "slowlog",
+          "label_zh": "慢查询日志",
+          "label_en": "Slow Log",
+          "cmd": "redis-cli slowlog get 10",
+          "type": "info"
+        },
+        {
+          "id": "install_svc",
+          "label_zh": "安装为服务",
+          "label_en": "Install Service",
+          "cmd": "redis-server --service-install",
+          "type": "warning"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "redis-server"
+        ],
+        "port_detect": [
+          {
+            "label": "Redis",
+            "default": 6379,
+            "pattern": "^port\\s+(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "mongodb",
+      "display_name": "MongoDB",
+      "category": "Database",
+      "scan_commands": [
+        "mongod",
+        "mongosh"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "mongod.conf",
+          "search": [
+            "{root}/mongod.cfg",
+            "{path}/mongod.cfg",
+            "/etc/mongod.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "mongod --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "mongod --dbpath data",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "mongosh --eval \"db.adminCommand({shutdown:1})\"",
+          "type": "danger"
+        },
+        {
+          "id": "status",
+          "label_zh": "状态",
+          "label_en": "Status",
+          "cmd": "mongosh --eval \"db.runCommand({ping:1})\"",
+          "type": "info"
+        },
+        {
+          "id": "stats",
+          "label_zh": "数据库统计",
+          "label_en": "DB Stats",
+          "cmd": "mongosh --eval \"db.stats()\"",
+          "type": "info"
+        },
+        {
+          "id": "show_dbs",
+          "label_zh": "数据库列表",
+          "label_en": "Show DBs",
+          "cmd": "mongosh --eval \"show dbs\"",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "mongod"
+        ],
+        "port_detect": [
+          {
+            "label": "MongoDB",
+            "default": 27017,
+            "pattern": "port:\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "sqlite",
+      "display_name": "SQLite",
+      "category": "Database",
+      "scan_commands": [
+        "sqlite3"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "sqlite3 --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "docker",
+      "display_name": "Docker",
+      "category": "DevTool",
+      "scan_commands": [
+        "docker"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "daemon.json",
+          "search": [
+            "{home}/.docker/daemon.json",
+            "C:/ProgramData/docker/config/daemon.json"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Docker 版本",
+          "label_en": "Version",
+          "cmd": "docker --version",
+          "type": "info"
+        },
+        {
+          "id": "info",
+          "label_zh": "Docker 信息",
+          "label_en": "Docker Info",
+          "cmd": "docker info",
+          "type": "info"
+        },
+        {
+          "id": "ps",
+          "label_zh": "运行中的容器",
+          "label_en": "Running Containers",
+          "cmd": "docker ps",
+          "type": "info"
+        },
+        {
+          "id": "ps_all",
+          "label_zh": "所有容器",
+          "label_en": "All Containers",
+          "cmd": "docker ps -a",
+          "type": "info"
+        },
+        {
+          "id": "images",
+          "label_zh": "镜像列表",
+          "label_en": "Images",
+          "cmd": "docker images",
+          "type": "info"
+        },
+        {
+          "id": "volumes",
+          "label_zh": "数据卷列表",
+          "label_en": "Volumes",
+          "cmd": "docker volume ls",
+          "type": "info"
+        },
+        {
+          "id": "networks",
+          "label_zh": "网络列表",
+          "label_en": "Networks",
+          "cmd": "docker network ls",
+          "type": "info"
+        },
+        {
+          "id": "disk",
+          "label_zh": "磁盘占用",
+          "label_en": "Disk Usage",
+          "cmd": "docker system df",
+          "type": "info"
+        },
+        {
+          "id": "prune",
+          "label_zh": "清理未使用资源",
+          "label_en": "Prune",
+          "cmd": "docker system prune -f",
+          "type": "danger"
+        },
+        {
+          "id": "compose_ver",
+          "label_zh": "Compose 版本",
+          "label_en": "Compose Version",
+          "cmd": "docker compose version",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "dockerd",
+          "Docker Desktop"
+        ],
+        "port_detect": [
+          {
+            "label": "Docker API",
+            "default": 2375
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "kubectl",
+      "display_name": "kubectl",
+      "category": "DevTool",
+      "scan_commands": [
+        "kubectl"
+      ],
+      "version_flag": "version --client",
+      "config_patterns": [
+        {
+          "name": "kubeconfig",
+          "search": [
+            "{home}/.kube/config"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "kubectl version --client",
+          "type": "info"
+        },
+        {
+          "id": "cluster_info",
+          "label_zh": "集群信息",
+          "label_en": "Cluster Info",
+          "cmd": "kubectl cluster-info",
+          "type": "info"
+        },
+        {
+          "id": "get_nodes",
+          "label_zh": "节点列表",
+          "label_en": "Nodes",
+          "cmd": "kubectl get nodes",
+          "type": "info"
+        },
+        {
+          "id": "get_pods",
+          "label_zh": "Pod 列表",
+          "label_en": "Pods",
+          "cmd": "kubectl get pods --all-namespaces",
+          "type": "info"
+        },
+        {
+          "id": "get_svc",
+          "label_zh": "服务列表",
+          "label_en": "Services",
+          "cmd": "kubectl get svc --all-namespaces",
+          "type": "info"
+        },
+        {
+          "id": "contexts",
+          "label_zh": "上下文列表",
+          "label_en": "Contexts",
+          "cmd": "kubectl config get-contexts",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "rabbitmq",
+      "display_name": "RabbitMQ",
+      "category": "Database",
+      "scan_commands": [
+        "rabbitmqctl"
+      ],
+      "version_flag": "version",
+      "config_patterns": [
+        {
+          "name": "rabbitmq.conf",
+          "search": [
+            "{root}/etc/rabbitmq/rabbitmq.conf",
+            "{appdata}/RabbitMQ/rabbitmq.conf",
+            "/etc/rabbitmq/rabbitmq.conf"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "rabbitmqctl version",
+          "type": "info"
+        },
+        {
+          "id": "status",
+          "label_zh": "状态",
+          "label_en": "Status",
+          "cmd": "rabbitmqctl status",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "rabbitmq-server",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "rabbitmqctl stop",
+          "type": "danger"
+        },
+        {
+          "id": "list_queues",
+          "label_zh": "队列列表",
+          "label_en": "List Queues",
+          "cmd": "rabbitmqctl list_queues",
+          "type": "info"
+        },
+        {
+          "id": "list_users",
+          "label_zh": "用户列表",
+          "label_en": "List Users",
+          "cmd": "rabbitmqctl list_users",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "rabbitmq-server",
+          "beam.smp",
+          "erl"
+        ],
+        "port_detect": [
+          {
+            "label": "AMQP",
+            "default": 5672,
+            "pattern": "listeners\\.tcp\\.default\\s*=\\s*(\\d+)"
+          },
+          {
+            "label": "Management",
+            "default": 15672,
+            "pattern": "management\\.listener\\.port\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "elasticsearch",
+      "display_name": "Elasticsearch",
+      "category": "Database",
+      "scan_commands": [
+        "elasticsearch"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": "elasticsearch.yml",
+          "search": [
+            "{root}/config/elasticsearch.yml",
+            "{path}/config/elasticsearch.yml",
+            "/etc/elasticsearch/elasticsearch.yml"
+          ]
+        },
+        {
+          "name": "jvm.options",
+          "search": [
+            "{root}/config/jvm.options",
+            "{path}/config/jvm.options"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "elasticsearch",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "health",
+          "label_zh": "集群健康",
+          "label_en": "Cluster Health",
+          "cmd": "curl -s http://localhost:9200/_cluster/health?pretty",
+          "type": "info"
+        },
+        {
+          "id": "info",
+          "label_zh": "节点信息",
+          "label_en": "Node Info",
+          "cmd": "curl -s http://localhost:9200",
+          "type": "info"
+        },
+        {
+          "id": "indices",
+          "label_zh": "索引列表",
+          "label_en": "Indices",
+          "cmd": "curl -s http://localhost:9200/_cat/indices?v",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "elasticsearch"
+        ],
+        "port_detect": [
+          {
+            "label": "ES HTTP",
+            "default": 9200,
+            "pattern": "http\\.port:\\s*(\\d+)"
+          },
+          {
+            "label": "ES Transport",
+            "default": 9300,
+            "pattern": "transport\\.port:\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "minio",
+      "display_name": "MinIO",
+      "category": "Database",
+      "scan_commands": [
+        "minio"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "minio --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "minio server data",
+          "type": "success",
+          "background": true
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "minio"
+        ],
+        "port_detect": [
+          {
+            "label": "MinIO API",
+            "default": 9000
+          },
+          {
+            "label": "MinIO Console",
+            "default": 9001
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "consul",
+      "display_name": "Consul",
+      "category": "DevTool",
+      "scan_commands": [
+        "consul"
+      ],
+      "version_flag": "version",
+      "config_patterns": [
+        {
+          "name": "consul.hcl",
+          "search": [
+            "{path}/consul.hcl",
+            "/etc/consul.d/consul.hcl"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "consul version",
+          "type": "info"
+        },
+        {
+          "id": "members",
+          "label_zh": "成员列表",
+          "label_en": "Members",
+          "cmd": "consul members",
+          "type": "info"
+        },
+        {
+          "id": "start_dev",
+          "label_zh": "启动(开发模式)",
+          "label_en": "Start (Dev)",
+          "cmd": "consul agent -dev",
+          "type": "success",
+          "background": true
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "consul"
+        ],
+        "port_detect": [
+          {
+            "label": "Consul HTTP",
+            "default": 8500
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "etcd",
+      "display_name": "etcd",
+      "category": "Database",
+      "scan_commands": [
+        "etcd"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "etcd --version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "etcd",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "health",
+          "label_zh": "健康检查",
+          "label_en": "Health",
+          "cmd": "etcdctl endpoint health",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "etcd"
+        ],
+        "port_detect": [
+          {
+            "label": "etcd Client",
+            "default": 2379
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "nacos",
+      "display_name": "Nacos",
+      "category": "DevTool",
+      "scan_commands": [],
+      "version_flag": "",
+      "config_patterns": [
+        {
+          "name": "application.properties",
+          "search": [
+            "{path}/conf/application.properties",
+            "{root}/conf/application.properties"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "start_standalone",
+          "label_zh": "启动(单机)",
+          "label_en": "Start (Standalone)",
+          "cmd": "startup.cmd -m standalone",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "shutdown.cmd",
+          "type": "danger"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "nacos-server"
+        ],
+        "port_detect": [
+          {
+            "label": "Nacos",
+            "default": 8848,
+            "pattern": "server\\.port\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "zookeeper",
+      "display_name": "ZooKeeper",
+      "category": "Database",
+      "scan_commands": [],
+      "version_flag": "",
+      "config_patterns": [
+        {
+          "name": "zoo.cfg",
+          "search": [
+            "{path}/conf/zoo.cfg",
+            "{root}/conf/zoo.cfg"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "zkServer.cmd",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "status",
+          "label_zh": "状态",
+          "label_en": "Status",
+          "cmd": "zkServer.cmd status",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "QuorumPeerMain"
+        ],
+        "port_detect": [
+          {
+            "label": "ZooKeeper",
+            "default": 2181,
+            "pattern": "clientPort\\s*=\\s*(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "kafka",
+      "display_name": "Kafka",
+      "category": "Database",
+      "scan_commands": [],
+      "version_flag": "",
+      "config_patterns": [
+        {
+          "name": "server.properties",
+          "search": [
+            "{path}/config/server.properties",
+            "{root}/config/server.properties"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "kafka-server-start.bat config\\server.properties",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "topics",
+          "label_zh": "Topic 列表",
+          "label_en": "List Topics",
+          "cmd": "kafka-topics.bat --list --bootstrap-server localhost:9092",
+          "type": "info"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "kafka"
+        ],
+        "port_detect": [
+          {
+            "label": "Kafka",
+            "default": 9092,
+            "pattern": "listeners\\s*=.*:(\\d+)"
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "tomcat",
+      "display_name": "Tomcat",
+      "category": "DevTool",
+      "scan_commands": [
+        "catalina.bat",
+        "catalina.sh",
+        "catalina"
+      ],
+      "version_flag": "version",
+      "config_patterns": [
+        {
+          "name": "server.xml",
+          "search": [
+            "{root}/conf/server.xml"
+          ]
+        },
+        {
+          "name": "web.xml",
+          "search": [
+            "{root}/conf/web.xml"
+          ]
+        },
+        {
+          "name": "context.xml",
+          "search": [
+            "{root}/conf/context.xml"
+          ]
+        },
+        {
+          "name": "tomcat-users.xml",
+          "search": [
+            "{root}/conf/tomcat-users.xml"
+          ]
+        },
+        {
+          "name": "logging.properties",
+          "search": [
+            "{root}/conf/logging.properties"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "catalina.bat version",
+          "type": "info"
+        },
+        {
+          "id": "start",
+          "label_zh": "启动",
+          "label_en": "Start",
+          "cmd": "{root}/bin/startup.bat",
+          "type": "success",
+          "background": true
+        },
+        {
+          "id": "stop",
+          "label_zh": "停止",
+          "label_en": "Stop",
+          "cmd": "{root}/bin/shutdown.bat",
+          "type": "danger"
+        }
+      ],
+      "status_check": {
+        "process_names": [
+          "java"
+        ],
+        "port_detect": [
+          {
+            "label": "Tomcat HTTP",
+            "default": 8080,
+            "pattern": "Connector\\s+port=\"(\\d+)\""
+          }
+        ]
+      }
+    },
+    {
+      "env_id": "ffmpeg",
+      "display_name": "FFmpeg",
+      "category": "DevTool",
+      "scan_commands": [
+        "ffmpeg"
+      ],
+      "version_flag": "-version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "ffmpeg -version",
+          "type": "info"
+        },
+        {
+          "id": "codecs",
+          "label_zh": "编解码器",
+          "label_en": "Codecs",
+          "cmd": "ffmpeg -codecs",
+          "type": "info"
+        },
+        {
+          "id": "formats",
+          "label_zh": "支持格式",
+          "label_en": "Formats",
+          "cmd": "ffmpeg -formats",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "curl",
+      "display_name": "cURL",
+      "category": "DevTool",
+      "scan_commands": [
+        "curl"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "curl --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "wget",
+      "display_name": "Wget",
+      "category": "DevTool",
+      "scan_commands": [
+        "wget"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "wget --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "gcc",
+      "display_name": "GCC",
+      "category": "SDK",
+      "scan_commands": [
+        "gcc"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "GCC 版本",
+          "label_en": "Version",
+          "cmd": "gcc --version",
+          "type": "info"
+        },
+        {
+          "id": "gpp",
+          "label_zh": "G++ 版本",
+          "label_en": "G++ Version",
+          "cmd": "g++ --version",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "msvc",
+      "display_name": "MSVC",
+      "category": "SDK",
+      "scan_commands": [
+        "cl"
+      ],
+      "version_flag": "",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "cl",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "conda",
+      "display_name": "Conda",
+      "category": "DevTool",
+      "scan_commands": [
+        "conda"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [
+        {
+          "name": ".condarc",
+          "search": [
+            "{home}/.condarc"
+          ]
+        }
+      ],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "Conda 版本",
+          "label_en": "Version",
+          "cmd": "conda --version",
+          "type": "info"
+        },
+        {
+          "id": "info",
+          "label_zh": "Conda 信息",
+          "label_en": "Conda Info",
+          "cmd": "conda info",
+          "type": "info"
+        },
+        {
+          "id": "envs",
+          "label_zh": "虚拟环境列表",
+          "label_en": "Environments",
+          "cmd": "conda env list",
+          "type": "info"
+        },
+        {
+          "id": "list",
+          "label_zh": "已安装包",
+          "label_en": "Installed Packages",
+          "cmd": "conda list",
+          "type": "info"
+        },
+        {
+          "id": "channels",
+          "label_zh": "频道列表",
+          "label_en": "Channels",
+          "cmd": "conda config --show channels",
+          "type": "info"
+        },
+        {
+          "id": "clean",
+          "label_zh": "清理缓存",
+          "label_en": "Clean Cache",
+          "cmd": "conda clean --all -y",
+          "type": "warning"
+        },
+        {
+          "id": "update",
+          "label_zh": "更新 Conda",
+          "label_en": "Update Conda",
+          "cmd": "conda update conda -y",
+          "type": "primary"
+        }
+      ]
+    },
+    {
+      "env_id": "volta",
+      "display_name": "Volta",
+      "category": "DevTool",
+      "scan_commands": [
+        "volta"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "volta --version",
+          "type": "info"
+        },
+        {
+          "id": "list",
+          "label_zh": "工具列表",
+          "label_en": "Tool List",
+          "cmd": "volta list all",
+          "type": "info"
+        }
+      ]
+    },
+    {
+      "env_id": "fnm",
+      "display_name": "fnm",
+      "category": "DevTool",
+      "scan_commands": [
+        "fnm"
+      ],
+      "version_flag": "--version",
+      "config_patterns": [],
+      "service_commands": [
+        {
+          "id": "version",
+          "label_zh": "版本",
+          "label_en": "Version",
+          "cmd": "fnm --version",
+          "type": "info"
+        },
+        {
+          "id": "list",
+          "label_zh": "已安装版本",
+          "label_en": "Installed Versions",
+          "cmd": "fnm list",
+          "type": "info"
+        },
+        {
+          "id": "current",
+          "label_zh": "当前版本",
+          "label_en": "Current",
+          "cmd": "fnm current",
+          "type": "info"
+        }
+      ]
+    }
+  ]
+}

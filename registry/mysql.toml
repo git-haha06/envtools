@@ -1,0 +1,30 @@
+[package]
+name = "mysql"
+display_name = "MySQL"
+category = "database"
+description = "Popular open-source relational database"
+website = "https://www.mysql.com"
+
+[versions]
+available = ["8.4.4", "8.0.41"]
+recommended = "8.4.4"
+
+[sources.official]
+windows = "https://dev.mysql.com/get/Downloads/MySQL-8.4/mysql-{version}-winx64.zip"
+macos = ""
+
+[sources.mirror]
+windows = "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.4/mysql-{version}-winx64.zip"
+macos = ""
+
+[install]
+windows_method = "extract_and_link"
+macos_method = "brew"
+
+[detect]
+commands = ["mysql --version"]
+windows_paths = ["C:\\Program Files\\MySQL\\MySQL Server *\\bin"]
+macos_paths = ["/usr/local/mysql/bin", "/opt/homebrew/bin/mysql"]
+
+[post_install]
+commands = []

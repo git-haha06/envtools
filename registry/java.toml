@@ -1,0 +1,34 @@
+[package]
+name = "java"
+display_name = "Java (Eclipse Temurin)"
+category = "runtime"
+description = "Java Development Kit by Eclipse Adoptium"
+website = "https://adoptium.net"
+
+[versions]
+available = ["21.0.6", "17.0.14", "11.0.26"]
+recommended = "21.0.6"
+
+[sources.official]
+windows = "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-{version}+7/OpenJDK21U-jdk_x64_windows_hotspot_{version}_7.zip"
+macos = "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-{version}+7/OpenJDK21U-jdk_aarch64_mac_hotspot_{version}_7.tar.gz"
+macos_x64 = "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-{version}+7/OpenJDK21U-jdk_x64_mac_hotspot_{version}_7.tar.gz"
+
+[sources.mirror]
+windows = "https://mirrors.tuna.tsinghua.edu.cn/Adoptium/21/jdk/x64/windows/OpenJDK21U-jdk_x64_windows_hotspot_{version}_7.zip"
+macos = "https://mirrors.tuna.tsinghua.edu.cn/Adoptium/21/jdk/aarch64/mac/OpenJDK21U-jdk_aarch64_mac_hotspot_{version}_7.tar.gz"
+
+[install]
+windows_method = "extract_and_link"
+macos_method = "extract_and_link"
+
+[detect]
+commands = ["java -version"]
+windows_paths = ["C:\\Program Files\\Java\\*", "C:\\Program Files\\Eclipse Adoptium\\*"]
+macos_paths = ["/Library/Java/JavaVirtualMachines"]
+
+[post_install]
+commands = []
+
+[post_install.env_vars]
+JAVA_HOME = "{install_dir}"

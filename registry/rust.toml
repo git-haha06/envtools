@@ -1,0 +1,32 @@
+[package]
+name = "rust"
+display_name = "Rust"
+category = "runtime"
+description = "Rust programming language toolchain (via rustup)"
+website = "https://www.rust-lang.org"
+
+[versions]
+available = ["stable", "nightly"]
+recommended = "stable"
+
+[sources.official]
+windows = "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
+macos = "https://static.rust-lang.org/rustup/dist/aarch64-apple-darwin/rustup-init"
+macos_x64 = "https://static.rust-lang.org/rustup/dist/x86_64-apple-darwin/rustup-init"
+
+[sources.mirror]
+windows = "https://rsproxy.cn/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
+macos = "https://rsproxy.cn/rustup/dist/aarch64-apple-darwin/rustup-init"
+macos_x64 = "https://rsproxy.cn/rustup/dist/x86_64-apple-darwin/rustup-init"
+
+[install]
+windows_method = "exe"
+macos_method = "exe"
+
+[detect]
+commands = ["rustc --version"]
+windows_paths = []
+macos_paths = []
+
+[post_install]
+commands = []

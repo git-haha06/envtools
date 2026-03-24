@@ -1,0 +1,32 @@
+[package]
+name = "nodejs"
+display_name = "Node.js"
+category = "runtime"
+description = "JavaScript runtime built on Chrome's V8 engine"
+website = "https://nodejs.org"
+
+[versions]
+available = ["22.14.0", "20.18.2", "18.20.6"]
+recommended = "22.14.0"
+
+[sources.official]
+windows = "https://nodejs.org/dist/v{version}/node-v{version}-win-x64.zip"
+macos = "https://nodejs.org/dist/v{version}/node-v{version}-darwin-arm64.tar.gz"
+macos_x64 = "https://nodejs.org/dist/v{version}/node-v{version}-darwin-x64.tar.gz"
+
+[sources.mirror]
+windows = "https://npmmirror.com/mirrors/node/v{version}/node-v{version}-win-x64.zip"
+macos = "https://npmmirror.com/mirrors/node/v{version}/node-v{version}-darwin-arm64.tar.gz"
+macos_x64 = "https://npmmirror.com/mirrors/node/v{version}/node-v{version}-darwin-x64.tar.gz"
+
+[install]
+windows_method = "extract_and_link"
+macos_method = "extract_and_link"
+
+[detect]
+commands = ["node --version"]
+windows_paths = ["C:\\Program Files\\nodejs"]
+macos_paths = ["/usr/local/bin/node", "/opt/homebrew/bin/node"]
+
+[post_install]
+commands = []
